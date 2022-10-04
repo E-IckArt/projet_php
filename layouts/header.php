@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="diététique, cabinet, heyrieux, santé, nutrition, soin de soi, rééquilibrage alimentaire, nutrition clinique, ateliers culinaires, cours de diététique">
-        <title><?= $title ?? 'Mon super Site'?></title>
+        <title><?php echo $title ?? 'Mon super Site';?></title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="../assets/favicon.png" type="image/png">
         <!-- My styleSheet -->
@@ -36,28 +36,28 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                                <a class="nav-link active" aria-current="page" href="../views/home.php">Accueil</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="#">Notre approche</a>
+                                <a class="nav-link" href="../views/notre-approche.php">Notre approche</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link">Notre équipe</a>
+                                <a class="nav-link" href="../views/notre-equipe.php">Notre équipe</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link">Ateliers culinaires</a>
+                                <a class="nav-link" href="../views/ateliers-culinaires.php">Ateliers culinaires</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link">Cours diététiques</a>
+                                <a class="nav-link" href="../views/cours-dietetique.php">Cours diététiques</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link">Actualités</a>
+                                <a class="nav-link" href="../views/actualites.php">Actualités</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link">Contact</a>
+                                <a class="nav-link" href="../views/contact.php">Contact</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link">Espace patient</a>
+                                <a class="nav-link" href="../views/espace-patient.php">Espace patient</a>
                                 </li>
                                 <li class="nav-item">
                                 <a class="nav-link">Boutique</a>
