@@ -1,5 +1,11 @@
 <?php 
-$title = "Mon Super site - Cours diététiques";
+
+$title = "Diététique Heyrieux - Cours diététiques";
+$description = "Venez à nos cours de diététique";
+
+include_once './layouts/header.php';
+include_once './layouts/searchBar.php';
+
 ?>
 
 <main class="container">
@@ -21,3 +27,5 @@ $title = "Mon Super site - Cours diététiques";
         </div>
     </div>
 </main>
+
+<?= include_once './layouts/footer.php'; ?>

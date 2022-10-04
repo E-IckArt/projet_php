@@ -1,5 +1,12 @@
-<?php 
-$title = "Mon Super site - Actualités";
+<?php
+
+$title = "Diététique Heyrieux - Actualités";
+$description = "Suivez l'actualité de notre cabinet";
+
+include_once './layouts/header.php';
+include_once './layouts/searchBar.php';
+
+
 ?>
 
 <main class="container">
@@ -21,3 +28,5 @@ $title = "Mon Super site - Actualités";
         </div>
     </div>
 </main>
+
+<?= include_once './layouts/footer.php'; ?>

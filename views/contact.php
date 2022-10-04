@@ -1,11 +1,16 @@
-<?php 
-$title = "Mon Super site - Contact";
+<?php
+$title = "Diététique Heyrieux - Contact";
+$description = "Contactez vos diététiciennes d'Heyrieux";
+
+include_once './layouts/header.php';
+include_once './layouts/searchBar.php';
+
 ?>
 
 <main class="container">
     <div class="row">
         <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
-            <h1>Contact</h1>
+            <h1 class="text-primary">Contact</h1>
         </div>
     </div>
     <div class="row">
@@ -21,3 +26,5 @@ $title = "Mon Super site - Contact";
         </div>
     </div>
 </main>
+
+<?= include_once './layouts/footer.php'; ?>

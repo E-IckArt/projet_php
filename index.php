@@ -1,38 +1,43 @@
 <?php
 
-include_once './layouts/header.php';
-
-
-// if (condition) {
-//     # code...
-// }
-
-// elseif (condition) {
-//     # code...
-// }
-// elseif (condition) {
-//     # code...
-// }
-// else {
-//     # code...
-// }
-
-
-switch ($_SERVER['REQUEST_URI']) {
-    case './layouts/home.php':
-        include 'home.php';
-        break;
-    case './layouts/notre-approche.php':
-        include 'notre-approche.php';
-        break;
-    default:
-        include 'notfound.php';
-        break;
+if (isset($_GET['page'])) {
+    $resquested_page = $_GET['page'];
+} else {
+    $resquested_page = 'home';
 }
 
-// include_once './layouts/home.php';
-
-include_once './layouts/footer.php';
+switch ($resquested_page) {
+    case 'home':
+        include './views/home.php';
+        break;
+    case 'notre-approche':
+        include './views/notre-approche.php';
+        break;
+    case 'notre-equipe':
+        include './views/notre-equipe.php';
+        break;
+    case 'ateliers-culinaires':
+        include './views/ateliers-culinaires.php';
+        break;
+    case 'cours-dietetique':
+        include './views/cours-dietetique.php';
+        break; 
+    case 'actualites':
+        include './views/actualites.php';
+        break;
+    case 'contact':
+        include './views/contact.php';
+        break;
+    case 'espace-patient':
+        include './views/espace-patient.php';
+        break;
+    case 'boutique':
+        include './views/boutique.php';
+        break;
+    default:
+        include './views/notfound.php';
+        break;
+}
 
 ?>
 

@@ -1,5 +1,10 @@
-<?php 
-$title = "Mon Super site - Ateliers culinaires";
+<?php
+
+$title = "Diététique Heyrieux - Ateliers culinaires";
+$description = "Nous vous proposons des ateliers culinaires en groupe chaque samedi matin";
+
+include_once './layouts/header.php';
+include_once './layouts/searchBar.php';
 ?>
 
 <main class="container">
@@ -21,3 +26,5 @@ $title = "Mon Super site - Ateliers culinaires";
         </div>
     </div>
 </main>
+
+<?= include_once './layouts/footer.php'; ?>
