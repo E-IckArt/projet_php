@@ -32,6 +32,10 @@ HTTP pour Hypertext Transfert Protocol est un protocole de communication entre u
 
 Un serveur web est soit un logiciel de service de ressources web, soit un ordinateur qui répond aux requêtes des navigateurs. Il utilise principalement le protocole HTTP.
 
+### Différence entre front-end et front-office / back-end et back-office
+
+![image](./assets/memo_front_back.png)
+
 ## Manip PHP
 
 ### Ajouter un titre dynamique dans la balise title
@@ -46,3 +50,7 @@ Un serveur web est soit un logiciel de service de ressources web, soit un ordina
 `<?php 
 $title = "Mon titre";
 ?>`
+
+### Concept de Front Controller :
+
+* Front Controller refers to a design pattern where a single component in your application is responsible for handling all requests to other parts of an application. It centralizes common functionality needed by the rest of your application.* 
