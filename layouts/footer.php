@@ -1,7 +1,7 @@
  <!-- Start - Footer -->
- <footer class="mt-auto">
+ <footer class="mt-auto bg-light">
             <nav
-                class="navbar navbar-expand-lg navbar-dark"
+                class="navbar navbar-expand-lg navbar-light"
                 aria-label="navigation"
             >
                 <div class="container-fluid justify-content-evenly flex-wrap">
