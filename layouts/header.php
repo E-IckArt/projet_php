@@ -20,7 +20,7 @@
         />
     </head>
 
-    <body class="d-flex flex-column min-vh-100 bg-dark">
+    <body class="d-flex flex-column min-vh-100">
         <header id="header" class="mb-5">
             <nav class="navbar navbar-expand-lg bg-light">
                 <div class="container-fluid">
