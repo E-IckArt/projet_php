@@ -1,3 +1,7 @@
+<?php 
+$title = "Mon Super site - Accueil";
+?>
+
 <main class="container">
     <div class="row">
         <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
