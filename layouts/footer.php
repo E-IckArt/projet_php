@@ -9,7 +9,7 @@
                         class="navbar-nav align-items-center mx-auto my-3 mb-lg-0"
                     >
                         <li class="nav-item mb-2 mx-4">
-                            <a href="" class="nav-link"
+                            <a href="?page=home" class="nav-link"
                                 >Diététique Heyrieux</a
                             >
                         </li>

@@ -1,5 +1,10 @@
-<?php 
-$title = "Mon Super site - Boutique";
+<?php
+$title = "Diététique Heyrieux - Boutique";
+$description = "Pour vous ou pour offrir, achetez vos forfaits séances cours de diététique ou ateliers culinaires en ligne";
+
+include_once './layouts/header.php';
+include_once './layouts/searchBar.php';
+
 ?>
 
 <main class="container">
@@ -21,3 +26,5 @@ $title = "Mon Super site - Boutique";
         </div>
     </div>
 </main>
+
+<?= include_once './layouts/footer.php'; ?>

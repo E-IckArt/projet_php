@@ -1,11 +1,17 @@
 <?php 
-$title = "Mon Super site - Espace client";
+
+$title = "Diététique Heyrieux - Espace client";
+$description = "Accédez à votre espace diététique en ligne";
+
+include_once './layouts/header.php';
+include_once './layouts/searchBar.php';
+
 ?>
 
 <main class="container">
     <div class="row">
         <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
-            <h1>Espace client</h1>
+            <h1 class="text-primary">Espace client</h1>
         </div>
     </div>
     <div class="row">
@@ -21,3 +27,5 @@ $title = "Mon Super site - Espace client";
         </div>
     </div>
 </main>
+
+<?= include_once './layouts/footer.php'; ?>

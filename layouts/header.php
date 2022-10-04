@@ -5,7 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="diététique, cabinet, heyrieux, santé, nutrition, soin de soi, rééquilibrage alimentaire, nutrition clinique, ateliers culinaires, cours de diététique">
-        <title><?php echo $title ?? 'Mon super Site';?></title>
+        <meta name="description" content=<?php echo ($description) ?? ' '; ?>>
+        <title><?php echo($title) ?? 'Diététique Heyrieux';?></title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="../assets/favicon.png" type="image/png">
         <!-- My styleSheet -->
@@ -23,10 +24,10 @@
     </head>
 
     <body class="d-flex flex-column min-vh-100">
-        <header id="header" class="mb-5">
+        <header id="header" class="mb-3">
             <nav class="navbar navbar-expand-lg bg-light">
                 <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="?page=home">
                 <img src="../assets/favicon.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
       Diététique Heyrieux
                 </a>
@@ -36,38 +37,33 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="../views/home.php">Accueil</a>
+                                <a class="nav-link active" aria-current="page" href="?page=home">Accueil</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="../views/notre-approche.php">Notre approche</a>
+                                <a class="nav-link" href="?page=notre-approche">Notre approche</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="../views/notre-equipe.php">Notre équipe</a>
+                                <a class="nav-link" href="?page=notre-equipe">Notre équipe</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="../views/ateliers-culinaires.php">Ateliers culinaires</a>
+                                <a class="nav-link" href="?page=ateliers-culinaires">Ateliers culinaires</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="../views/cours-dietetique.php">Cours diététiques</a>
+                                <a class="nav-link" href="?page=cours-dietetique">Cours diététiques</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="../views/actualites.php">Actualités</a>
+                                <a class="nav-link" href="?page=actualites">Actualités</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="../views/contact.php">Contact</a>
+                                <a class="nav-link" href="?page=contact">Contact</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="../views/espace-patient.php">Espace patient</a>
+                                <a class="nav-link" href="?page=espace-patient">Espace patient</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link">Boutique</a>
+                                <a class="nav-link" href="?page=boutique">Boutique</a>
                                 </li>
-
                             </ul>
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Rechercher</button>
-                            </form>
                         </div>
                     </div>
             </nav>

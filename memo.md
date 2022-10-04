@@ -42,7 +42,7 @@ Un serveur web est soit un logiciel de service de ressources web, soit un ordina
 
 - Dans le fichier header.php :
 
-<title><?= $title ?? 'Mon super Site'?></title>
+<title><?= $title ?? 'Diététique Heyrieux'?></title>
 
 
 - Dans le fichier de la page : 
@@ -54,3 +54,18 @@ $title = "Mon titre";
 ### Concept de Front Controller :
 
 * Front Controller refers to a design pattern where a single component in your application is responsible for handling all requests to other parts of an application. It centralizes common functionality needed by the rest of your application.* 
+
+
+## Case (valeur) doit correspondre à la valeur du paramètre passé dans le lien (de la barre de navigation par exemple)
+
+#### Afficher une page dynamiquement : 
+
+- Dans index.php :
+
+![structure switch case](./assets/frontController.png)
+
+- Dans la navbar  
+
+`<a href="?page=nom_de_ma_page"></a>`:
+
+![structure lien de navigation](./assets/frontController2.png)
