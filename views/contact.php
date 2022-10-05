@@ -16,7 +16,7 @@ include_once './layouts/searchBar.php';
     <div class="row">
         <div class="col-12 col-md-10 col-lg-8 mx-auto text-center position-relative">
             <div class="fs-1 text-center fw-bold">
-            <img class="contact--img" src="../assets/contact.svg" alt="#">
+                <img class="contact--img" src="../assets/contact.svg" alt="#">
             </div>
             <!-- Test Form - START -->
             <div class="row">
@@ -26,8 +26,8 @@ include_once './layouts/searchBar.php';
                             <div class="col-12">
                                 <select class="form-select opacity-75 mb-3" name="civility" aria-label="Sélectionner votre civilité (madame ou monsieur)">
                                     <option selected>Civilité</option>
-                                    <option value="1">Madame</option>
-                                    <option value="2">Monsieur</option>
+                                    <option value="Madame">Madame</option>
+                                    <option value="Monsieur">Monsieur</option>
                                 </select>
                             </div>
                             <div class="col-12">
