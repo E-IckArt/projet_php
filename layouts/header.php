@@ -1,8 +1,14 @@
+<?php
+$page = $_SERVER['PHP_SELF'];
+$sec = "15";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="diététique, cabinet, heyrieux, santé, nutrition, soin de soi, rééquilibrage alimentaire, nutrition clinique, ateliers culinaires, cours de diététique">
         <meta name="description" content=<?php echo ($description) ?? ' '; ?>>
