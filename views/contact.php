@@ -4,7 +4,8 @@ $description = "Contactez vos diététiciennes d'Heyrieux";
 
 include_once './layouts/header.php';
 include_once './layouts/searchBar.php';
-
+include_once './controllers/contact.php';
+/*
 $civility = $_POST['civility'];
 $lastname = $_POST['lastname'];
 $firstname = $_POST['firstname'];
@@ -87,7 +88,7 @@ if (isset($send)) {
 } else {
     echo 'Il manque des données pour soumettre votre formulaire';
 }
-
+*/
 ?>
 
 <main class="container contact--container">
@@ -114,6 +115,11 @@ if (isset($send)) {
                                 <div class="form-floating opacity-75 mb-3">
                                     <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom">
                                     <label for="lastname">Nom <span class="text-danger">*</span></label>
+                                    <p>
+                                        <?php if (isset($errors['lastname'])) : ?>
+                                            <?= $errors['lastname'] ?>
+                                        <?php endif ?>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -130,19 +136,19 @@ if (isset($send)) {
                         <div class="bg-white opacity-75 border border-secondary rounded rounded-3 opacity-75 mb-3 p-3" style="--bs-border-opacity: .75">
                             <p class="fw-bold"> Raison du contact <span class="text-danger">*</span></p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="contactReason" id="askForInformations" checked>
+                                <input class="form-check-input" type="radio" name="contactReason" id="askForInformations" value="ask_For_Informations" checked>
                                 <label class="form-check-label" for="askForInformations">
                                     Demande d'informations
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="contactReason" id="askForConnexionIssue">
+                                <input class="form-check-input" type="radio" name="contactReason" id="askForConnexionIssue" value="ask_For_Connexion_Issue">
                                 <label class="form-check-label" for="askForConnexionIssue">
                                     Problème de connection à votre espace patient
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="contactReason" id="askForSuggestion">
+                                <input class="form-check-input" type="radio" name="contactReason" id="askForSuggestion" value="ask_For_Suggestion">
                                 <label class="form-check-label" for="askForSuggestion">
                                     Suggestions
                                 </label>
@@ -159,7 +165,6 @@ if (isset($send)) {
                         </button>
                     </div>
                 </form>
-                <div id="error"><?php echo $error ?></div>
             </div>
         </div>
     </div>

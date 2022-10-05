@@ -1,4 +1,46 @@
 <?php
+
+$patternEmail = "/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$/iD";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $rerrors = [];
+
+    // Vérification du formulaire.
+    if (empty($_POST['lastname'])) {
+        $errors['lastname'] = "Le nom est obligatoire.";
+    }
+
+    if (empty($_POST['firstname'])) {
+        $errors['firstname'] = "Le prénom est obligatoire.";
+    }
+
+    if (empty($_POST['message'] || (strlen($_POST['message']) >= 5))) {
+        $errors['message'] = " Le message est obligatoire est doit contenir au moins cinq caractères.";
+    }
+
+    if (empty($_POST['email']) || !preg_match(
+        $patternEmail,
+        $email
+    )) {
+        $errors['email'] = "L'adresse email doit être une adresse valide.";
+    }
+
+    if (empty($rerrors)) {
+        // Créer un dossier, créer un fichier et enregistrer les données.
+
+
+        // TODO - Retirer les messages si tout fonctionne.
+        echo "Le formulaire est valide, les données ont bien été enregistrées.";
+        echo '<pre>';
+        var_dump($_POST);
+        echo '<pre>';
+
+        // Redigirer l'utilisateur
+        header("Location: /views/message-submitted.php");
+    }
+}
+
+
 /*
 var_dump($_POST);
 
