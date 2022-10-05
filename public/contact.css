@@ -1,0 +1,12 @@
+/*
+.contact--container {
+}
+*/
+
+.contact--img {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    position: fixed;
+    z-index: -1;
+}
