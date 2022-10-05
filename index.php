@@ -34,6 +34,9 @@ switch ($resquested_page) {
     case 'boutique':
         include './views/boutique.php';
         break;
+    /*case 'controllers-contact':
+        include './controllers/contact.php';
+        break;*/
     default:
         include './views/notfound.php';
         break;
