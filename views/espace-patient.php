@@ -20,7 +20,7 @@ include_once './layouts/searchBar.php';
             <p class="my-5 text-warning">
             PAGE EN CONSTRUCTION
             </p>
-            <img src="../assets/espace-client.svg" alt="#">
+            <img src="../assets/espace-patient.svg" alt="#">
             </div>
 
 
