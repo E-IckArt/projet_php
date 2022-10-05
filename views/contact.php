@@ -43,21 +43,17 @@ if (isset($send)) {
     echo '<pre>';
     var_dump($_POST);
     echo '<pre>';
-    if (
-        !empty($civility) && !empty($lastname) && !empty($firstname) && (!empty($message) && (strlen($message) >= 5))
+    if (!empty($civility) && !empty($lastname) && !empty($firstname) && (!empty($message) && (strlen($message)>= 5))
         && !empty($contactReason) && (!empty($email) && preg_match(
-            $patternEmail,
-            $email
-        )
-        )
-    ) {
+                $patternEmail, $email)
+            )) {
         try {
             uploadMessages();
             //Renvoyer l'utilisateur vers la page de confirmation d'envoi du message
-            //            header('Location: ../views/message-submitted.php');
+//            header('Location: ../views/message-submitted.php');
         } catch (Exception $exception) {
             // Envoyer le message d'erreur dans un fichier
-            file_put_contents('message_logs.log', $exception->getMessage() . PHP_EOL, FILE_APPEND);
+            file_put_contents('message_logs.log', $exception->getMessage().PHP_EOL, FILE_APPEND);
             exit('Une erreur s\'est produite, votre message n\'a pas pu être enregistré. Veuillez vérifier votre saisie.');
         }
     } else {
@@ -165,6 +161,7 @@ if (isset($send)) {
                         </button>
                     </div>
                 </form>
+                <div id="error"><?php echo $error ?></div>
             </div>
         </div>
     </div>
