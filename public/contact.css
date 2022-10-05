@@ -1,12 +1,6 @@
-/*
-.contact--container {
-}
-*/
 
-.contact--img {
-    width: 100%;
-    height: auto;
+.contact--container {
+    background: url(../assets/contact.svg) no-repeat center;
     margin: auto;
-    position: fixed;
-    z-index: -1;
 }
+
