@@ -10,24 +10,38 @@
 - Générer un message d'erreur dans la page views/contact.php pour chaque valeur manquante.
 */
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $errors = [];
+echo '<pre>';
+var_dump($_POST);
+echo '<pre>';
 
-    if (empty($_POST['lastname'])) {
-        $errors['lastname'] = 'Le nom est obligatoire';
-    }
+function checkFormInputErrors()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $errors = [];
+    
+        if (empty($_POST['lastname'])) {
+            $errors['lastname'] = 'Le nom est obligatoire';
+        }
+    
+        if (empty($_POST['firstname'])) {
+            $errors['firstname'] = 'Le prénom est obligatoire';
+        }
+        if (empty($_POST['email']) || (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) {
+            $errors['email'] = 'L\'adresse email doit être une adresse valide';
+        }
+        if (empty($_POST['contactReason'])) {
+            $errors['contactReason'] = 'Veuillez indiquer la raison du message';
+        }
+        if (empty($_POST['message']) || strlen($_POST['message']) < 5) {
+            $errors['message'] = 'Le message doit contenir au moins 5 caractères';
+        }
+    }    
+}
 
-    if (empty($_POST['firstname'])) {
-        $errors['firstname'] = 'Le prénom est obligatoire';
-    }
-    if (empty($_POST['email']) || (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) {
-        $errors['email'] = 'L\'adresse email doit être une adresse valide';
-    }
-    if (empty($_POST['contactReason'])) {
-        $errors['contactReason'] = 'Veuillez indiquer la raison du message';
-    }
-    if (empty($_POST['message']) || strlen($_POST['message']) < 5) {
-        $errors['message'] = 'Le message doit contenir au moins 5 caractères';
+function redirectUserToForm()
+{
+    if (isset($errors)) {
+        header('Location: /views/.php');
     }
 }
 
@@ -40,6 +54,13 @@ function redirectUser()
         // Rediriger l'utilisateur sur la page 'message envoyé'
         header('Location: /views/message-submitted.php');
     }
+}
+
+function treatContactForm()
+{
+    checkFormInputErrors();
+    redirectUserToForm();
+    redirectUser();
 }
 
 // TODO - Nettoyer les champs avant enregistrement (htmlspecialchars()).

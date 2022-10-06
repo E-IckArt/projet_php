@@ -6,8 +6,6 @@ $description = "Contactez vos diététiciennes d'Heyrieux";
 require_once './layouts/header.php';
 require_once './layouts/searchBar.php';
 
-require './controllers/contact.php'; // TODO - Vérifier que cet appel soit indispensable
-
 ?>
 
 <main class="container contact--container">
@@ -16,6 +14,7 @@ require './controllers/contact.php'; // TODO - Vérifier que cet appel soit indi
             <h1 class="text-primary">Contact</h1>
             <!-- Test Form - START -->
             <div class="row">
+
                 <form action="../controllers/contact.php" method="POST">
                     <div class="col-12 col-md-8 mx-auto">
                         <div class="row">
@@ -31,18 +30,37 @@ require './controllers/contact.php'; // TODO - Vérifier que cet appel soit indi
                                 <div class="form-floating opacity-75 mb-3">
                                     <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom">
                                     <label for="lastname">Nom <span class="text-danger">*</span></label>
+                                    
+                                    <?php if (isset($errors['lastname'])) : ?>
+                                        <p class="text-danger">
+                                            <?= $errors['lastname']; ?>
+                                        </p>
+                                    <?php endif ?>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating opacity-75 mb-3">
                                     <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom">
                                     <label for="firstname">Prénom <span class="text-danger">*</span></label>
+
+                                    <?php if (isset($errors['firstname'])) : ?>
+                                        <p class="text-danger">
+                                            <?= $errors['firstname']; ?>
+                                        </p>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating opacity-75 mb-3">
                             <input type="email" class="form-control" id="email" name="email" placeholder="nom@example.com">
                             <label for="email">Email <span class="text-danger">*</span></label>
+
+                            <?php if (isset($errors['email'])) : ?>
+                                <p class="text-danger">
+                                    <?= $errors['email']; ?>
+                                </p>
+                            <?php endif ?>
+
                         </div>
                         <div class="bg-white opacity-75 border border-secondary rounded rounded-3 opacity-75 mb-3 p-3" style="--bs-border-opacity: .75">
                             <p class="fw-bold"> Raison du contact <span class="text-danger">*</span></p>
@@ -64,10 +82,24 @@ require './controllers/contact.php'; // TODO - Vérifier que cet appel soit indi
                                     Suggestions
                                 </label>
                             </div>
+                            <div>
+                            <?php if (isset($errors['contactReason'])) : ?>
+                                    <p class="text-danger">
+                                        <?= $errors['contactReason']; ?>
+                                    </p>
+                            <?php endif ?>
+                            </div>
                         </div>
                         <div class="form-floating opacity-75 mb-3">
                             <textarea class="form-control" placeholder="Laissez votre message ici" id="floatingTextarea" name="message" maxlength="500" style="height: 200px" required></textarea>
                             <label for="floatingTextarea">Tapez votre message ici <span class="text-danger">*</span> <span class="fst-italic">(500 caractères max)</span></label>
+
+                            <?php if (isset($errors['message'])) : ?>
+                                    <p class="text-danger">
+                                        <?= $errors['message']; ?>
+                                    </p>
+                            <?php endif ?>
+
                         </div>
                         <button type="submit" class="btn btn-primary mb-5" name="send" value="Envoyer">Envoyer
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#fff" class="bi bi-send" viewBox="0 0 18 18">
