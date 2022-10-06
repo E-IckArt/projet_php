@@ -1,12 +1,95 @@
 <?php
-
 $title = "Diététique Heyrieux - Contact";
 $description = "Contactez vos diététiciennes d'Heyrieux";
 
 require_once './layouts/header.php';
 require_once './layouts/searchBar.php';
 
-require './controllers/contact.php'; // TODO - Vérifier que cet appel soit indispensable
+require './controllers/contact.php';
+
+
+$civility = $_POST['civility'];
+$lastname = $_POST['lastname'];
+$firstname = $_POST['firstname'];
+$email = $_POST['email'];
+$contactReason = $_POST['contactReason'];
+$message = $_POST['message'];
+$send = $_POST['send'];
+
+$patternEmail = "/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$/iD";
+
+
+
+// Enregistrer le message
+// TODO - Dans un tableau !!!!
+function uploadMessages()
+{
+    $uploads_dir = '../uploads/messages' . DIRECTORY_SEPARATOR;
+    $fileName = $uploads_dir . 'message-array.php';
+
+    // Créer un dossier uploads s'il n'existe pas
+    if (!is_dir($uploads_dir)) {
+        try {
+            mkdir('../uploads/messages');
+            echo 'Le répertoire a été créé';
+        } catch (Exception $e) {
+            echo 'Une erreur est survenue, le répertoire n\a pas été crée :' . $e->getMessage();
+        }
+    }
+
+    // Créer un fichier s'il n'existe pas. Ajouter le contenu de la variable $_POST au fichier
+    file_put_contents($fileName, implode(',', $_POST) . PHP_EOL, FILE_APPEND);
+}
+
+if (isset($send)) {
+    echo '<pre>';
+    var_dump($_POST);
+    echo '<pre>';
+    if (
+        !empty($civility) && !empty($lastname) && !empty($firstname) && (!empty($message) && (strlen($message) >= 5))
+        && !empty($contactReason) && (!empty($email) && preg_match(
+            $patternEmail,
+            $email
+        )
+        )
+    ) {
+        try {
+            uploadMessages();
+            //Renvoyer l'utilisateur vers la page de confirmation d'envoi du message
+            //            header('Location: ../views/message-submitted.php');
+        } catch (Exception $exception) {
+            // Envoyer le message d'erreur dans un fichier
+            file_put_contents('message_logs.log', $exception->getMessage() . PHP_EOL, FILE_APPEND);
+            exit('Une erreur s\'est produite, votre message n\'a pas pu être enregistré. Veuillez vérifier votre saisie.');
+        }
+    } else {
+        switch ($_POST) {
+            case (empty($lastname)):
+                $error = 'Merci de renseigner votre nom';
+                break;
+            case (empty($firstname)):
+                $error = 'Merci de renseigner votre prénom';
+                break;
+            case (empty($email)):
+                $error = 'Merci de renseigner votre email';
+                break;
+            case (empty($contactReason)):
+                $error = 'Merci de choisir un motif de contact';
+                break;
+            case (empty($message)):
+            case (strlen($message) >= 5):
+                $error = 'Votre message doit contenir au moins 5 caratères';
+                break;
+            default:
+                $error = 'ça ne marche pas';
+        }
+        echo '<pre>';
+        var_dump($_POST);
+        echo '<pre>';
+    }
+} else {
+    echo 'Il manque des données pour soumettre votre formulaire';
+}
 
 ?>
 
@@ -16,7 +99,7 @@ require './controllers/contact.php'; // TODO - Vérifier que cet appel soit indi
             <h1 class="text-primary">Contact</h1>
             <!-- Test Form - START -->
             <div class="row">
-                <form action="../controllers/contact.php" method="POST">
+                <form action="?page=contact" method="POST">
                     <div class="col-12 col-md-8 mx-auto">
                         <div class="row">
                             <div class="col-12">
